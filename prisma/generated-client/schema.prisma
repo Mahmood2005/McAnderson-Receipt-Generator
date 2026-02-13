@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated-client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Receipt {
+  id             String   @id @default(uuid())
+  receiptNumber  String   @unique // Could be auto-increment or UUID, using String for flexibility
+  date           DateTime
+  customerName   String
+  amountWords    String
+  amountNumeric  Float
+  trackingNumber String
+  purpose        String // "Being payment for..."
+  carrier        String   @default("UPS") // UPS, DHL, FEDEX, ARAMEX
+  createdAt      DateTime @default(now())
+}
