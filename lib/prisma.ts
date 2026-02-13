@@ -1,6 +1,6 @@
-import { PrismaClient } from "@/prisma/generated-client";
+import { PrismaClient } from "@prisma/client";
 
-console.log("Initializing Prisma Client from custom generated path...");
+
 
 export const prisma = new PrismaClient({
   log: ["query", "error", "warn"],
